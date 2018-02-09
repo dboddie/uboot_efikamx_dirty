@@ -488,7 +488,7 @@ int do_diskboot(cmd_tbl_t *cmdtp, int flag, int argc, char *const argv[])
 
 /* ------------------------------------------------------------------------- */
 
-inline void __ide_outb(int dev, int port, unsigned char val)
+void __ide_outb(int dev, int port, unsigned char val)
 {
 	debug("ide_outb (dev= %d, port= 0x%x, val= 0x%02x) : @ 0x%08lx\n",
 	      dev, port, val,
@@ -510,7 +510,7 @@ inline void __ide_outb(int dev, int port, unsigned char val)
 void ide_outb(int dev, int port, unsigned char val)
 	__attribute__ ((weak, alias("__ide_outb")));
 
-inline unsigned char __ide_inb(int dev, int port)
+unsigned char __ide_inb(int dev, int port)
 {
 	uchar val;
 
